@@ -1,3 +1,4 @@
+const users = [];
 const establishSocketConnection = (socket, io) => {
   console.log("Cliente conectado");
 
@@ -6,9 +7,8 @@ const establishSocketConnection = (socket, io) => {
     io.emit("response", data);
   });
 
-  socket.on("users", (data) => {
-    io.emit("users", data);
-  });
+  users.push(socket.id);
+  io.emit("users", users);
 };
 
 module.exports = establishSocketConnection;

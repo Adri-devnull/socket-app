@@ -19,7 +19,9 @@ const App = () => {
 	}, [number]);
 
 	useEffect(() => {
-		socket.emit('users', socket.id);
+		socket.on('users', users => {
+			setUsers(users);
+		});
 	}, []);
 
 	return (
